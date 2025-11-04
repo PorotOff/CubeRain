@@ -197,7 +197,6 @@ GameObject:
   m_Component:
   - component: {fileID: 148717231}
   - component: {fileID: 148717233}
-  - component: {fileID: 148717232}
   m_Layer: 0
   m_Name: SpawningSystem
   m_TagString: Untagged
@@ -222,22 +221,6 @@ Transform:
   - {fileID: 1219154007}
   m_Father: {fileID: 1775478016}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &148717232
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 148717230}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 966ed28a183e0db478609564b055f44b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _cubePrefab: {fileID: 3110748295702367409, guid: ff73fc3b366a76d49963b253722c6d6c, type: 3}
-  _container: {fileID: 796388900}
-  _defaultPoolSize: 10
-  _maxPoolSize: 20
 --- !u!114 &148717233
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -250,10 +233,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc025acfb5d44b44fa7627f7983c4639, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _cubesPool: {fileID: 148717232}
+  _cubePrefab: {fileID: 3110748295702367409, guid: ff73fc3b366a76d49963b253722c6d6c, type: 3}
+  _container: {fileID: 796388900}
+  _defaultPoolSize: 10
+  _maxPoolSize: 20
   _minSpawnPosition: {fileID: 1488730519}
   _maxSpawnPosition: {fileID: 1219154007}
-  _spawnPause: 0.5
+  _spawnPauseSeconds: 1.5
 --- !u!1 &433667330
 GameObject:
   m_ObjectHideFlags: 0
@@ -578,7 +564,7 @@ GameObject:
   - component: {fileID: 1429674416}
   m_Layer: 0
   m_Name: Platform
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -747,7 +733,7 @@ GameObject:
   - component: {fileID: 2040402842}
   m_Layer: 0
   m_Name: Platform (2)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -853,7 +839,7 @@ GameObject:
   - component: {fileID: 2073576750}
   m_Layer: 0
   m_Name: Platform (1)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

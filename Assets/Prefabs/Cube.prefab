@@ -14,10 +14,8 @@ GameObject:
   - component: {fileID: 3859794433001251492}
   - component: {fileID: 3035663717746948614}
   - component: {fileID: 3110748295702367409}
-  - component: {fileID: -3287284536033384067}
   - component: {fileID: -8100903322209032244}
-  - component: {fileID: -7011579856702050667}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -149,20 +147,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c092a0c664e63143b93d023ff82e9b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _minDestroyingTime: 2
-  _maxDestroyingTime: 5
---- !u!114 &-3287284536033384067
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7726961224309343593}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f1a1c9f4f27bf9444a017f07305e6205, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  _groundTag: Ground
+  _minDestroyingTimeSeconds: 2
+  _maxDestroyingTimeSeconds: 5
 --- !u!114 &-8100903322209032244
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -176,15 +163,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _defaulColor: {r: 0.95686275, g: 0.6995646, b: 0.32156864, a: 1}
---- !u!114 &-7011579856702050667
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7726961224309343593}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3222b798a05c30045b5545da808f0b99, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

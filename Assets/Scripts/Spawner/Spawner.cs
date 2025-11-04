@@ -1,23 +1,46 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Pool;
 
 public class Spawner : MonoBehaviour
 {
-    [SerializeField] private CubesPool _cubesPool;
+    [Header("Pool settings")]
+    [SerializeField] private Cube _cubePrefab;
+    [SerializeField] private Transform _container;
+    [SerializeField] private int _defaultPoolSize = 10;
+    [SerializeField] private int _maxPoolSize = 20;
+    [Header("Spawner settings")]
     [SerializeField] private Transform _minSpawnPosition;
     [SerializeField] private Transform _maxSpawnPosition;
     [SerializeField] private float _spawnPauseSeconds = 1.5f;
 
+    private IObjectPool<Cube> _cubesPool;
+
+    private void Awake()
+        => _cubesPool = new ObjectPool<Cube>(OnPoolCreate, OnPoolGet, OnPoolRelease, OnPoolDestroy, true, _defaultPoolSize, _maxPoolSize);
+
     private void Start()
         => StartCoroutine(Spawn());
+
+    private Cube OnPoolCreate()
+        => Instantiate(_cubePrefab, _container);
+
+    private void OnPoolGet(Cube cube)
+        => cube.gameObject.SetActive(true);
+
+    private void OnPoolRelease(Cube cube)
+        => cube.gameObject.SetActive(false);
+
+    private void OnPoolDestroy(Cube cube)
+        => Destroy(gameObject);
 
     private IEnumerator Spawn()
     {
         WaitForSecondsRealtime wait = new WaitForSecondsRealtime(_spawnPauseSeconds);
 
-        while (gameObject.activeSelf)
+        while (enabled)
         {
-            Cube cube = _cubesPool.GetCube();
+            Cube cube = _cubesPool.Get();
 
             float randomXPosition = Random.Range(_minSpawnPosition.position.x, _maxSpawnPosition.position.x);
             float randomYPosition = Random.Range(_minSpawnPosition.position.y, _maxSpawnPosition.position.y);
@@ -35,6 +58,6 @@ public class Spawner : MonoBehaviour
     private void ReturnToPool(Cube cube)
     {
         cube.Destroyed -= ReturnToPool;
-        _cubesPool.ReleaseCube(cube);
+        _cubesPool.Release(cube);
     }
 }
