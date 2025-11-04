@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class Cube : MonoBehaviour
 {
-    [SerializeField, Min(0)] private float _minDestroyingTime;
-    [SerializeField, Min(0)] private float _maxDestroyingTime;
+    [SerializeField, Min(0)] private float _minDestroyingTimeSeconds;
+    [SerializeField, Min(0)] private float _maxDestroyingTimeSeconds;
 
     public event Action<Cube> Destroyed;
 
@@ -14,7 +14,7 @@ public class Cube : MonoBehaviour
 
     private IEnumerator DelayedDestroy()
     {
-        float destroyingTime = UnityEngine.Random.Range(_minDestroyingTime, _maxDestroyingTime);
+        float destroyingTime = UnityEngine.Random.Range(_minDestroyingTimeSeconds, _maxDestroyingTimeSeconds);
         yield return new WaitForSeconds(destroyingTime);
         Destroyed?.Invoke(this);
     }

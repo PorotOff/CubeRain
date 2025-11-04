@@ -6,14 +6,14 @@ public class Spawner : MonoBehaviour
     [SerializeField] private CubesPool _cubesPool;
     [SerializeField] private Transform _minSpawnPosition;
     [SerializeField] private Transform _maxSpawnPosition;
-    [SerializeField] private float _spawnPause = 1.5f;
+    [SerializeField] private float _spawnPauseSeconds = 1.5f;
 
     private void Start()
         => StartCoroutine(Spawn());
 
     private IEnumerator Spawn()
     {
-        WaitForSecondsRealtime wait = new WaitForSecondsRealtime(_spawnPause);
+        WaitForSecondsRealtime wait = new WaitForSecondsRealtime(_spawnPauseSeconds);
 
         while (gameObject.activeSelf)
         {
