@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class Exploder
+public class ExploderModel
 {
     public void Explode(Rigidbody rigidbody, float radius, float force)
         => rigidbody.AddExplosionForce(force, rigidbody.transform.position, radius);

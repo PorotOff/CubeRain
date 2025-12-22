@@ -3,9 +3,9 @@ using UnityEngine;
 
 public class InputService : MonoBehaviour
 {
-    public event Action<bool> OpenedStatistic;
-
     private bool _isStatisticOpened = false;
+
+    public event Action<bool> OpenedStatistic;
 
     private void Update()
     {

@@ -2,7 +2,7 @@ using System.Collections;
 using UnityEngine;
 
 [RequireComponent(typeof(MeshRenderer))]
-public class Transparentizer : MonoBehaviour
+public class TransparentizerModel : MonoBehaviour
 {
     private MeshRenderer _meshRenderer;
 

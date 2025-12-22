@@ -4,7 +4,7 @@ using UnityEngine;
 
 [RequireComponent(typeof(GroundChecker))]
 [RequireComponent(typeof(ColorChanger))]
-public class Cube : PoolObject
+public class Cube : MonoBehaviour, IPooledObject
 {
     [Header("Destroying settings")]
     [SerializeField, Min(0)] private float _minDestroyingTimeSeconds;
@@ -13,7 +13,7 @@ public class Cube : PoolObject
     private GroundChecker _groundChecker;
     private ColorChanger _colorChanger;
 
-    public override event Action<PoolObject> Destroyed;
+    public event Action<IPooledObject> Destroyed;
 
     private void Awake()
     {

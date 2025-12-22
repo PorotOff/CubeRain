@@ -2,7 +2,7 @@ using System;
 using System.Collections;
 using UnityEngine;
 
-public class CubeSpawner : Spawner
+public class CubeSpawner : Spawner<Cube>
 {
     [Header("CubeSpawner settings")]
     [SerializeField] private float _spawnIntervalSeconds = 1.5f;
@@ -41,16 +41,18 @@ public class CubeSpawner : Spawner
             float randomYPosition = UnityEngine.Random.Range(_minSpawnPosition.position.y, _maxSpawnPosition.position.y);
             float randomZPosition = UnityEngine.Random.Range(_minSpawnPosition.position.z, _maxSpawnPosition.position.z);
             Vector3 position = new Vector3(randomXPosition, randomYPosition, randomZPosition);
-            
+
             Spawn(position);
 
             yield return wait;
         }
     }
 
-    protected override void OnPoolObjectDestroyed(PoolObject poolObject)
+    protected override void OnPoolObjectDestroyed(IPooledObject pooledObject)
     {
-        base.OnPoolObjectDestroyed(poolObject);
-        CubeReleasedAtPosition?.Invoke(poolObject.transform.position);
+        base.OnPoolObjectDestroyed(pooledObject);
+
+        Cube cube = (Cube)pooledObject;
+        CubeReleasedAtPosition?.Invoke(cube.transform.position);
     }
 }

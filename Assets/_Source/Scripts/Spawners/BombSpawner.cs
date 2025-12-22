@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class BombSpawner : Spawner
+public class BombSpawner : Spawner<Bomb>
 {
     [Header("BombSpawner settings")]
     [SerializeField] private CubeSpawner _cubeSpawner;
